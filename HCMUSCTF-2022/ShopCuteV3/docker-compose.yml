@@ -1,0 +1,34 @@
+version: "3.6"
+services:
+    shop-cuties-db:
+        build: shop-cuties-db
+        command: --default-authentication-plugin=mysql_native_password
+        restart: unless-stopped
+        expose:
+            - 3306
+        environment:
+            - MYSQL_ROOT_PASSWORD=45299417d86f231f6a584d1488edb763
+            - MYSQL_DATABASE=myDB
+            - MYSQL_USER=shop-cuties-1
+            - MYSQL_PASSWORD=22ebd5b17182c046e6c4bc5df1719b56
+
+    shop-cuties:
+        build: shop-cuties
+        restart: unless-stopped
+        ports:
+            - 32181:80
+        environment:
+            - MYSQL_HOSTNAME=shop-cuties-db
+            - MYSQL_ROOT_PASSWORD=45299417d86f231f6a584d1488edb763
+            - MYSQL_DATABASE=myDB
+            - MYSQL_USER=shop-cuties-1
+            - MYSQL_PASSWORD=22ebd5b17182c046e6c4bc5df1719b56
+            - FLAG=HCMUS-CTF{fake-flag}
+    
+    shop-api:
+        build: shop-api        
+        ports:
+            - 32182:8080
+
+volumes:
+    shop-cuties-1:
