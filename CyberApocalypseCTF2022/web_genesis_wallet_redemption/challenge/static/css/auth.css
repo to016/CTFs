@@ -1,0 +1,27 @@
+ html, body {
+     height: 100%;
+}
+
+/* query-msg */
+
+ #resp-msg {
+     display: none;
+     margin-top: 2rem;
+}
+ .alert {
+     position: relative;
+     padding: .50rem 1.25rem;
+     margin-bottom: 1rem;
+     border: 1px solid transparent;
+     border-radius: .25rem;
+}
+
+.active {
+    background-color : #3b526a;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}

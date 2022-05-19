@@ -1,0 +1,23 @@
+#wrapper {
+    position: relative;
+    margin-top: 100px !important;
+    max-width: 850px;
+    margin: 0 auto;
+  }
+  
+  #chart-bar {
+    position: relative;
+    margin-top: -38px;
+    display: block;
+  }
+  
+  .link {
+    position: absolute;
+    bottom: 7px;
+    right: 13px;
+    z-index: 10;
+    color: #ccc;
+    font-size: 12px;
+    text-decoration: none;
+    font-family: Helvetica, Arial;
+  }

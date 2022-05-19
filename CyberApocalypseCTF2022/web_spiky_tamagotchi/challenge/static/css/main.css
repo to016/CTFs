@@ -1,0 +1,81 @@
+@font-face{
+    font-family:'digital-clock-font';
+    src: url('/static/css/fonts/Open_24_Display_St.ttf');
+  }
+
+  html, body {
+      height: 100%;
+  }
+  body {
+      background: #313364;
+  }
+
+  .interface-container {
+      position: relative;
+      margin-top: 50px;
+      height: 530px;
+      width: 1200px;
+      overflow: hidden;
+      border: 2px solid #bf4848;
+      background: #261006 url('/static/images/background.jpg') no-repeat;
+      background-size: contain;
+  }
+
+  .spiky {
+  display: none;
+  position: absolute;
+  left: 410px;
+  bottom: 60px;
+  }
+
+  .active {
+      display: block;
+  }
+
+#treat {
+    position: absolute;
+    z-index: 1;
+    left: 505px;
+    top: 240px;
+    width: 120px;
+}
+
+  .stats-container {
+      margin-top: 20px;
+      background: #c64f55;
+      padding: 5px;
+      padding-top: 0px;
+      /*! border: 3px solid #d9c370; */
+      font-family: 'digital-clock-font', 'Orbitron', sans-serif;
+      font-weight: bold;
+      font-size: 30px;
+      text-align: center;
+      color: white;
+  }
+
+.controllers-container {
+    margin-top: 30px;
+    text-align: center;
+}
+
+
+.controller-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #287dea;
+    font-weight: bold;
+    color: white;
+    font-family: sans-serif;
+}
+
+#feed-btn {
+    background-color: #f98b2e;
+}
+
+#play-btn {
+    background-color: #48bf7a;
+}
+
+#sleep-btn {
+    background-color: #397ae1;
+}

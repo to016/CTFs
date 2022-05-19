@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Genesis Wallet | Settings</title>
+        <link rel="icon" href="/static/images/logo.png" />
+        <link rel="stylesheet" type="text/css" href="https://unicons.iconscout.com/release/v2.1.9/css/unicons.css">
+        <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="/static/css/dashboard.css" />
+        <link rel="stylesheet" type="text/css" href="/static/css/settings.css" />
+        <link rel="stylesheet" type="text/css" href="/static/css/switch.css" />
+        <link rel="stylesheet" type="text/css" href="/static/css/easymde.min.css" />
+        <style>
+            @font-face {
+            font-family: roswreck;
+            src: url(/static/fonts/roswreck/roswreck.ttf);
+            }
+
+            body {
+                font-family: roswreck !important;
+            }
+            .settings-wrapper {
+                margin-top: 50px;
+                margin-left: 250px !important;
+                overflow: hidden;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="switch">
+            <input id="language-toggle" class="check-toggle check-toggle-round-flat" type="checkbox" onchange="switchLang()">
+            <label for="language-toggle"></label>
+            <span class="on">XQ</span>
+            <span class="off">EN</span>
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-krypto">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="/static/images/logo.png" height="36px">
+                    <span class="small">Genesis Wallet</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarColor01">
+                    <ul class="navbar-nav me-auto">
+                    </ul>
+                    <ul class="navbar-nav navbar-right">
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="main-container">
+            <div class="menu-container">
+                <div class="menu-wrapper">
+                    <a href="/xq/dashboard"><div class="menu-item">
+                        <i class="uil uil-wallet"></i> <span>Wallet</span>
+                    </div></a>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#sendModal"><div class="menu-item">
+                        <i class="uil uil-message"></i> <span>Send</span>
+                    </div></a>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#recvModal"><div class="menu-item">
+                        <i class="uil uil-import"></i> <span>Receive</span>
+                    </div></a>
+                    <a href="/xq/transactions"><div class="menu-item">
+                        <i class="uil uil-transaction"></i> <span>Transactions</span>
+                    </div></a>
+                    <a href="/xq/settings"><div class="menu-item">
+                        <i class="uil uil-setting"></i> <span>Settings</span>
+                    </div></a>
+                    <a href="/logout"></i><div class="menu-item">
+                        <i class="uil uil-sign-out-alt"></i> <span>Logout</span>
+                    </div></a>
+                </div>
+            </div>
+            <div class="main-wrapper cspin">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <div class="settings-wrapper">
+                   <p>PERSONAL INFORMATION</p>
+                   <div class="row">
+                        <div class="col">
+                            <p class="bhd">Username</p>
+                            <input type="text" class="form-inp" value="{{ user.username }}" readonly>
+                        </div>
+                        <div class="col">
+                            <p class="bhd">Password</p>
+                            <input type="text" class="form-inp" value="*************" readonly>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col">
+                            <p class="bhd">SECURITY</p>
+                            <p class="chd">Two-Factor Authentication</p>
+                            <div class="radio">
+                                <input id="radio-1" name="radio" type="radio" checked>
+                                <label for="radio-1" class="radio-label">ENABLED</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <p class="bhd">&nbsp;</p>
+                            <p class="chd">Reset 2FA key</p>
+                            <a href="/xq/reset-2fa"><button class="btn reset-btn">Set new OTP Key</button></a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p class="chd">REQUIRE 2FA for outbound transactions</p>
+                            <div class="radio">
+                                <input id="radio-3" name="radio3" type="radio" checked>
+                                <label for="radio-3" class="radio-label">ENABLED</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <p class="chd">Export Wallet</p>
+                            <button class="btn export-btn">Export Wallet</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p class="chd">Flag suspicious login</p>
+                            <div class="radio">
+                                <input id="radio-2" name="radio2" type="radio" checked>
+                                <label for="radio-2" class="radio-label">ENABLED</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+        {% if flag != null %}
+        <div class="c-balance">
+            <div class="row">
+                <div class="col">
+                    <p class="pr-h1">flag</p>
+                    <p class="pr-num"> {{ flag }} </p>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+          <!-- Receive Modal -->
+        <div class="modal fade" id="recvModal" tabindex="-1" aria-labelledby="recvModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <p>Receive Genesis</p>
+                    <p class="recv-addr">{{ user.address }}</p>
+                    <p>Share the above address to the sender to receive Genesis on your account.</p>
+                </div>
+            </div>
+            </div>
+        </div>
+          <!-- Send Modal -->
+          <div class="modal fade" id="sendModal" tabindex="-1" aria-labelledby="sendModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body recv-modal">
+                    <p>Send Genesis</p>
+                    <p>Receiver Address</p>
+                    <input type="text" class="form-control" id="send-addr" placeholder="GENESIS ADDRESS" />
+                    <div class="row mt-3">
+                        <div class="col">
+                            <p>Amount to send</p>
+                            <input type="number" class="form-control" id="send-amt" placeholder="0.0001" />
+                        </div>
+                        <div class="col text-center u-bl">
+                            <p>Available balance</p>
+                            <p id="u-balance">𐆖 {{user.balance}} GTC</p>
+                        </div>
+                    </div>
+                    <p>Note</p>
+                    <textarea id="trx-cmt"></textarea>
+                    <div class="row text-center">
+                        <div class="col">
+                            <button class="btn btn-send" id="send-btn">Send <i class="uil uil-message"></i> </button>
+                        </div>
+                    </div>
+                    <p class="alert alert-success hidden" id="send-resp">GTC Sent successfully!</p>
+                </div>
+            </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="/static/js/jquery-3.6.0.min.js"></script>
+        <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="/static/js/purify.min.js"></script>
+        <script type="text/javascript" src="/static/js/easymde.min.js"></script>
+        <script type="text/javascript" src="/static/js/dashboard.js"></script>
+    </body>
+</html>

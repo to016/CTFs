@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Spiky Tamagotchi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="/static/images/logo.png" />
+  <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+</head>
+<body>
+  <div class="container interface-container">
+    <img id="treat" style="display: none;" src="/static/images/treat.gif">
+    <img class="spiky awkward active" src="/static/images/spiky-awkward.gif">
+    <img class="spiky cry" src="/static/images/spiky-cry.gif">
+    <img class="spiky dancing" src="/static/images/spiky-dancing.gif">
+    <img class="spiky kissy" src="/static/images/spiky-kissy.gif">
+    <img class="spiky shocked" src="/static/images/spiky-shocked.gif">
+    <img class="spiky sleep" src="/static/images/spiky-sleep.gif">
+  </div>
+  <div class="container stats-container">
+    <div class="row">
+      <div class="col">💊 Health: <span id="health">60</span></div>
+      <div class="col">🏋🏻‍♂️ Weight: <span id="weight">42</span></div>
+      <div class="col">💓 Happiness: <span id="happiness">50</span></div>
+    </div>
+  </div>
+  <div class="container controllers-container">
+    <div class="row">
+      <div class="col"><button class="btn controller-btn" id="feed-btn">FEED</button></div>
+      <div class="col"><button class="btn controller-btn" id="play-btn">PLAY</button></div>
+      <div class="col"><button class="btn controller-btn" id="sleep-btn">SLEEP</button></div>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="/static/js/jquery-3.6.0.slim.min.js"></script>
+  <script src="/static/js/interface.js"></script>
+</body>
+</html>
+
