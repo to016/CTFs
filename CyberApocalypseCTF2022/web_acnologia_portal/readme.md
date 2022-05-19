@@ -7,7 +7,7 @@ tar.extractall(tmp)
 ```
 Đọc thêm tại [đây](https://codeql.github.com/codeql-query-help/python/py-tarslip/#):
 
-Kịch bản khai thác: tạo môt 
+Kịch bản khai thác:
 1. Tạo một symlink `flag.txt -> /flag.txt`
 2. Dùng [evilarc](https://github.com/ptoomey3/evilarc) để tạo tar `file.tar.gz` từ symlink
 3. XSS + CSRF con bot để fetch và upload một `file.tar.gz`.
