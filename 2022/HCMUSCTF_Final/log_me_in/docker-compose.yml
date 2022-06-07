@@ -1,0 +1,22 @@
+version: "3.1"
+services:
+  db:
+    build: ./db
+    command: mysqld --default-authentication-plugin=mysql_native_password
+    environment:
+      - MYSQL_USER=db_user
+      - MYSQL_PASSWORD=db_password
+      - MYSQL_DATABASE=myDB   
+      - MYSQL_ROOT_PASSWORD=random_password_of_root
+  web:
+    build: ./web
+    environment:
+     - SECRET_KEY=fake_key
+     - FLAG=fake_flag
+    depends_on:
+     - db
+    ports:
+     - "24010:8000"
+    volumes:
+     - "./web/src:/app"
+    restart: unless-stopped
