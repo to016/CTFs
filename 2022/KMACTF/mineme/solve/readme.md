@@ -6,7 +6,7 @@ Bài viết gốc có thể xem tại [đây](https://hackmd.io/@taidh/Bk94PZjt9
 Mình mới học về log4j cách đâu 2 ngày nhưng may thay được dịp gặp được cái chall về nó nên sẽ viết về solution mà chủ yếu từ wu của một đàn anh.
 
 Server cho một file `server_1.15.jar` và để ta có thể dùng `tlauncher` để debug local.
-Nhờ vào decription của tác giả ta có thể lên mạng tìm một version khác của nó để check sự khác biệt (mình có tải sẵn ở [đây](mineme\app\server.jar) )
+Nhờ vào decription của tác giả ta có thể lên mạng tìm một version khác của nó để check sự khác biệt (mình có tải sẵn ở [đây](https://github.com/to016/CTFs/blob/main/2022/KMACTF/mineme/mineme/app/server.jar) )
 
 Dùng intellij idea để kiểm tra sự khác nhau của 2 `.jar` file
 
