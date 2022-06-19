@@ -13,7 +13,7 @@ Dùng intellij idea để kiểm tra sự khác nhau của 2 `.jar` file
 ![diff](https://user-images.githubusercontent.com/77546253/174476296-12876d99-e575-46ac-b33a-ce20413a2d12.png)
 
 
-Ta có thể thấy bên file của đề có sử dụng `collections` và cũng có rất nhiều gadget chain phổ biến với nó. Việc còn lại là set up một ldap server để có thể transer serialized data. Cách này vừa có thể giúp ta khai khác log4j + deserialization vừa bypass được các version mới của jdk. Có thể dùng tool [này](https://github.com/WhiteHSBG/JNDIExploit).
+Ta có thể thấy bên file của đề có sử dụng `collections` và cũng có rất nhiều gadget chain phổ biến với nó. Việc còn lại là set up một ldap server để có thể transfer serialized data. Cách này vừa có thể giúp ta khai khác log4j + deserialization vừa bypass được các version mới của jdk. Có thể dùng tool [này](https://github.com/WhiteHSBG/JNDIExploit).
 
 ![log4j_exploitable](https://user-images.githubusercontent.com/77546253/174476309-7bd4b92a-78ad-47ed-a001-fc3f6b97b512.png)
 
