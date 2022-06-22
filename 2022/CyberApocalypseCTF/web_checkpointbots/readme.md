@@ -88,8 +88,7 @@ Host ldapserver:
 
 Gửi payload:
 
-![send_payload](https://user-images.githubusercontent.com/77546253/174995207-265b900c-66c7-4105-b784-4870b529dd25.png)
-
+![send_payload](https://user-images.githubusercontent.com/77546253/174995666-220ad48d-aa10-46dc-8ee6-273e7b1039ea.png)
 
 Overwrite `index.html` thành công:
 
