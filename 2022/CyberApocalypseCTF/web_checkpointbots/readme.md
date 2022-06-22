@@ -1,6 +1,6 @@
 # Solution
 
-Bài này là dạng lỗi log4j trong java, có thể thấy ở 2 endpoint `check-in` và `sheet` đều dùng `log.error` để log ra lỗi nếu token từ request param là không hợp lệ. Vì vậy ta có thể trigger log4j ở một trong hai.
+Bài này là dạng lỗi log4j trong java, có thể thấy ở 2 endpoint `check-in` và `sheet` đều dùng `log.error` để log ra lỗi nếu token từ request param là không hợp lệ. Vì vậy ta có thể trigger log4j ở endpoint nào cũng được.
 
 ```java
 @GetMapping(value="/api/checkpointbot/check-in", produces="application/json")
