@@ -1,0 +1,896 @@
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+@-webkit-keyframes flashing {
+    0%,
+    30% {
+      transform: scale(1);
+    }
+    70%,
+    100% {
+      transform: scale(0);
+    }
+  }
+  @keyframes flashing {
+    0%,
+    30% {
+      transform: scale(1);
+    }
+    70%,
+    100% {
+      transform: scale(0);
+    }
+  }
+  @-webkit-keyframes pulsation {
+    0% {
+      transform: scale(0);
+      border-color: red;
+      background-color: rgba(255, 0, 0, 0.6);
+    }
+  }
+  @keyframes pulsation {
+    0% {
+      transform: scale(0);
+      border-color: red;
+      background-color: rgba(255, 0, 0, 0.6);
+    }
+  }
+  @-webkit-keyframes rotation {
+    from {
+      transform: rotate(0deg) translateZ(1px);
+    }
+    to {
+      transform: rotate(360deg) translateZ(1px);
+    }
+  }
+  @keyframes rotation {
+    from {
+      transform: rotate(0deg) translateZ(1px);
+    }
+    to {
+      transform: rotate(360deg) translateZ(1px);
+    }
+  }
+  @-webkit-keyframes scale {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.3);
+    }
+  }
+  @keyframes scale {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.3);
+    }
+  }
+  @-webkit-keyframes polish {
+    30%,
+    100% {
+      transform: skewX(35deg) translateX(380%);
+    }
+  }
+  @keyframes polish {
+    30%,
+    100% {
+      transform: skewX(35deg) translateX(380%);
+    }
+  }
+  .radar {
+    height: 40em;
+    width: 48em;
+    position: relative;
+    cursor: pointer;
+    perspective: 62.5em;
+  }
+  .radar .radar-map-container,
+  .radar .risk-points,
+  .radar .scanning-circle canvas {
+    left: 0;
+    top: 0;
+    position: absolute;
+  }
+  .radar .radar-map-container,
+  .radar .radar-map,
+  .radar .scanning-circle,
+  .radar .risk-elements-group {
+    transition: transform 2.5s ease-out, opacity 2.5s ease-out, transform-origin;
+  }
+  .radar .radar-map-container,
+  .radar .radar-map,
+  .radar .scanning-circle {
+    will-change: transform;
+  }
+  .radar .radar-map-container {
+    width: 400%;
+    height: 400%;
+    left: -150%;
+    top: -150%;
+    transform: scale(0.25);
+    transform-style: preserve-3d;
+  }
+  .radar .radar-map {
+    color: rgba(19, 182, 206, 0.4);
+    background: url('/img/pA6Ttst.png') center / contain no-repeat;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+  }
+  .radar .radar-map.roaming {
+    transition-duration: 5s !important;
+    transition-timing-function: ease-in-out;
+    transition-delay: 0.5s;
+  }
+  .radar .radar-map .risk-elements-group {
+    opacity: 0;
+    transform-style: preserve-3d;
+  }
+  .radar .radar-map .risk-elements-group .red-flag,
+  .radar .radar-map .risk-elements-group .info-panel,
+  .radar .radar-map .risk-elements-group .dashed-circle {
+    position: absolute;
+  }
+  .radar .radar-map .risk-elements-group .red-flag,
+  .radar .radar-map .risk-elements-group .dashed-circle {
+    visibility: hidden;
+  }
+  .radar .radar-map .risk-elements-group .red-flag,
+  .radar .radar-map .risk-elements-group .info-panel {
+    transform-origin: bottom;
+    transform: rotateX(-70deg);
+  }
+  .radar .radar-map .risk-elements-group .red-flag {
+    width: 0.5em;
+    height: 10em;
+    background-color: white;
+    transform: rotateX(-70deg) rotateZ(-90deg);
+  }
+  .radar .radar-map .risk-elements-group .red-flag.stand-up {
+    transform: rotateX(-70deg);
+    visibility: visible;
+  }
+  .radar .radar-map .risk-elements-group .red-flag:before {
+    content: attr(data-city);
+    font-weight: bold;
+    color: white;
+    position: absolute;
+    background-color: #c1112a;
+    -webkit-clip-path: polygon(0 0, 100% 50%, 0 100%);
+    -moz-clip-path: polygon(0 0, 100% 50%, 0 100%);
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
+    width: `110/23`em;
+    height: `80/23`em;
+    line-height: `80/23`em;
+    font-size: 1.4375em;
+    letter-spacing: `10/23`em;
+    padding-left: `12/23`em;
+    box-sizing: border-box;
+    top: `10/23`em;
+    white-space: nowrap;
+  }
+  .radar .radar-map .risk-elements-group .red-flag:after {
+    content: '';
+    position: absolute;
+    width: 0em;
+    height: 0.625em;
+    border-radius: 50%;
+    background-color: inherit;
+    top: calc(100% - `10/16`em);
+    left: calc(50% - `35/2/16`em);
+  }
+  .radar .radar-map .risk-elements-group .info-panel {
+    transform: rotateX(-70deg) translateY(-30%);
+    -moz-filter: opacity(0);
+    filter: opacity(0);
+    border: 0.0625em solid #DCDA6B;
+    border-radius: 0.25em;
+    background-color: #c1112a;
+    display: table;
+    font-weight: bold;
+    font-size: 2.5em;
+    text-shadow: `1/40`em `1/40`em `2/40`em black;
+    padding: `8/40`em `12/40`em;
+    font-family: Ã©Â»â€˜Ã¤Â½â€œ;
+    overflow: hidden;
+  }
+  .radar .radar-map .risk-elements-group .info-panel.showup {
+    -moz-filter: opacity(1);
+    filter: opacity(1);
+    transition: -moz-filter 1s linear 0.5s, filter 1s linear 0.5s, opacity 0.5s linear;
+  }
+  .radar .radar-map .risk-elements-group .info-panel.polish:after {
+    -webkit-animation: polish 5s linear 1 1s;
+            animation: polish 5s linear 1 1s;
+  }
+  .radar .radar-map .risk-elements-group .info-panel .info-title {
+    background-image: linear-gradient(to right, rgba(208, 209, 120, 0.6), rgba(223, 226, 183, 0.05));
+    color: #FFE401;
+    padding: 0 `11/40`em;
+    border-radius: inherit;
+  }
+  .radar .radar-map .risk-elements-group .info-panel .info-content {
+    color: white;
+    margin: `10/40`em;
+    line-height: 1.3em;
+  }
+  .radar .radar-map .risk-elements-group .info-panel:after {
+    content: '';
+    position: absolute;
+    width: 30%;
+    height: 100%;
+    transform: skewX(35deg) translateX(-160%);
+    top: 0;
+    background-image: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent);
+  }
+  .radar .radar-map .risk-elements-group .dashed-circle {
+    width: 7.5em;
+    height: 7.5em;
+    border-radius: 50%;
+    background: center / contain no-repeat;
+    -webkit-animation: rotation 5s linear infinite;
+            animation: rotation 5s linear infinite;
+    transition-property: visibility;
+  }
+  .radar .radar-map .risk-elements-group .dashed-circle:after {
+    content: '';
+    border-radius: inherit;
+    margin: auto;
+    width: 15%;
+    height: 15%;
+    background-color: #E03636;
+    box-shadow: 0 0 0.9375em black;
+    -webkit-animation: scale 1s linear infinite alternate;
+            animation: scale 1s linear infinite alternate;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+  .radar .changing-number-container {
+    position: absolute;
+    right: 12%;
+    top: 10%;
+    bottom: 0;
+    margin: auto;
+  }
+  .radar .changing-number-container {
+    display: table;
+    color: #10ABE0;
+  }
+  .radar .changing-number-container:before,
+  .radar .changing-number-container:after {
+    display: inline-block;
+  }
+  .radar .changing-number-container:before {
+    content: '';
+    background: linear-gradient(to bottom, transparent 45%, currentColor 55%, transparent 55%) center / 100% 1em;
+    width: 1em;
+    height: 100%;
+    margin-right: 0.625em;
+  }
+  .radar .changing-number-container:after {
+    font-size: 0.75em;
+    content: attr(data-number);
+    width: `16/12`em;
+    line-height: `16/12`em;
+    word-break: break-all;
+    letter-spacing: `16/12`em;
+    vertical-align: top;
+    font-weight: bold;
+  }
+  .radar .risk-points {
+    z-index: 15;
+  }
+  .radar .risk-points .risk-point-group .risk-point {
+    position: absolute;
+    width: 0.625em;
+    height: 0.625em;
+    border-radius: 50%;
+    -webkit-filter: blur(2px);
+  }
+  .radar .risk-points .risk-point-group .risk-point:after {
+    content: '';
+    display: block;
+    height: 100%;
+    border-radius: 50%;
+    will-change: transform;
+    transform: scale(0);
+  }
+  .radar .risk-points .risk-point-group .risk-point.type1:after {
+    box-shadow: 0 0 0.3125em 0.3125em white inset, 0 0 0.3125em 0.5625em rgba(245, 76, 128, 0.54), 0 0 2.5625em 1.5625em rgba(222, 17, 17, 0.89);
+  }
+  .radar .risk-points .risk-point-group .risk-point.type2:after {
+    box-shadow: 0 0 0.3125em 0.3125em white inset, 0 0 0.3125em 0.5625em #15d8e8, 0 0 2.5625em 1.5625em rgba(44, 218, 226, 0.89);
+  }
+  .radar .risk-points .risk-point-group .risk-point.critical {
+    transform: scale(1);
+  }
+  .radar .risk-points .risk-point-group .risk-point.ordinary {
+    transform: scale(0.4);
+  }
+  .radar .risk-points .risk-point-group .risk-point.pulsation {
+    color: red;
+    -webkit-filter: none;
+    width: 5em;
+    height: 5em;
+  }
+  .radar .risk-points .risk-point-group .risk-point.pulsation .pulse-circle {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    box-sizing: border-box;
+    border: 0.1875em solid currentColor;
+    -webkit-animation: pulsation 3s linear 1;
+            animation: pulsation 3s linear 1;
+  }
+  .radar .risk-points .risk-point-group .risk-point.pulsation .pulse-circle:nth-child(2) {
+    -webkit-animation-delay: 0.8s;
+            animation-delay: 0.8s;
+  }
+  .radar .risk-points .risk-point-group .risk-point.pulsation .pulse-circle:nth-child(3) {
+    -webkit-animation-delay: 1.6s;
+            animation-delay: 1.6s;
+  }
+  .radar .risk-points .risk-point-group .risk-point.pulsation:after {
+    content: '';
+    position: absolute;
+    width: 15%;
+    height: 15%;
+    border-radius: 50%;
+    background-color: currentColor;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+  }
+  .radar .risk-points .risk-point-group.flashing .risk-point:after {
+    -webkit-animation: flashing 2s linear 1;
+            animation: flashing 2s linear 1;
+  }
+  .radar .scanning-circle {
+    position: relative;
+    height: 100%;
+  }
+  .radar .scanning-circle .radar-scanner {
+    width: 40em;
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+    transform: rotate(125deg);
+  }
+  .radar .scanning-circle .radar-scanner .inner-scanner,
+  .radar .scanning-circle .radar-scanner .outer-scanner {
+    width: 100%;
+    height: 100%;
+  }
+  .radar .scanning-circle .radar-scanner .inner-scanner {
+    display: none;
+    position: absolute;
+    -webkit-clip-path: inset(0 0 0 50%);
+    -webkit-filter: blur(30px);
+    -webkit-animation: rotation 30s linear infinite;
+            animation: rotation 30s linear infinite;
+  }
+  .radar .scanning-circle .radar-scanner .inner-scanner:after {
+    content: '';
+    -webkit-clip-path: inset(0 50% 0 0);
+    display: block;
+    height: 100%;
+    background-color: rgba(19, 182, 206, 0.3);
+    transform: rotate(30deg);
+    border-radius: 50%;
+  }
+  .radar .scanning-circle .radar-scanner .outer-scanner {
+    -webkit-clip-path: circle(20em at 50% 48%);
+    -moz-clip-path: circle(20em at 50% 48%);
+    clip-path: circle(20em at 50% 48%);
+    box-sizing: border-box;
+    border: 0 solid white;
+    border-top-width: 5px;
+    border-radius: 50%;
+    box-shadow: 0 -0.1875em 0.3125em #33C9E8, 0 0 0.9375em white, 0 0.3125em 0.5em #38C1D2 inset;
+    will-change: transform;
+  }
+  .radar .scanning-circle .radar-scanner .outer-scanner .scanner-container {
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    -webkit-clip-path: circle(50% at 50% 50%);
+    -moz-clip-path: circle(50% at 50% 50%);
+    clip-path: circle(50% at 50% 50%);
+    transform: rotate(-35deg);
+  }
+  .radar .scanning-circle .radar-scanner .outer-scanner .scanner-container .umbrella,
+  .radar .scanning-circle .radar-scanner .outer-scanner .scanner-container .color-sector {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    border-radius: inherit;
+  }
+  .radar .scanning-circle .radar-scanner .outer-scanner .scanner-container .umbrella {
+    -webkit-clip-path: inset(0 0 50% 50%);
+    -moz-clip-path: inset(0 0 50% 50%);
+    clip-path: inset(0 0 50% 50%);
+    overflow: hidden;
+    -moz-filter: blur(30px);
+    filter: blur(30px);
+  }
+  .radar .scanning-circle .radar-scanner .outer-scanner .scanner-container .umbrella .color-sector {
+    -webkit-clip-path: inset(0 50% 0 0);
+    -moz-clip-path: inset(0 50% 0 0);
+    clip-path: inset(0 50% 0 0);
+    background-color: rgba(19, 182, 206, 0.2);
+  }
+  .radar .scanning-circle .radar-scanner .outer-scanner .scanner-container .umbrella .color-sector:nth-child(1) {
+    transform: rotate(60deg);
+  }
+  .radar .scanning-circle .radar-scanner .outer-scanner .scanner-container .umbrella .color-sector:nth-child(2) {
+    transform: rotate(54deg);
+  }
+  .radar .scanning-circle .radar-scanner .outer-scanner .scanner-container .umbrella .color-sector:nth-child(3) {
+    transform: rotate(48deg);
+  }
+  .radar .scanning-circle .radar-scanner .outer-scanner .scanner-container .umbrella .color-sector:nth-child(4) {
+    transform: rotate(42deg);
+  }
+  .radar .scanning-circle .radar-scanner .outer-scanner .scanner-container .umbrella .color-sector:nth-child(5) {
+    transform: rotate(36deg);
+  }
+  .radar .scanning-circle .radar-scanner .outer-scanner .scanner-container .umbrella .color-sector:nth-child(6) {
+    transform: rotate(30deg);
+  }
+  .radar .scanning-circle .radar-scanner .outer-scanner .scanner-container .umbrella .color-sector:nth-child(7) {
+    transform: rotate(24deg);
+  }
+  .radar .scanning-circle .radar-scanner .outer-scanner .scanner-container .umbrella .color-sector:nth-child(8) {
+    transform: rotate(18deg);
+  }
+  .radar .scanning-circle .radar-scanner .outer-scanner .scanner-container .umbrella .color-sector:nth-child(9) {
+    transform: rotate(12deg);
+  }
+  .radar .scanning-circle .radar-scanner .outer-scanner .scanner-container .umbrella .color-sector:nth-child(10) {
+    transform: rotate(6deg);
+  }
+  .radar .scanning-circle .radar-scanner .outer-scanner .scanner-container .scanner-decoration {
+    position: relative;
+    height: 100%;
+  }
+  .radar .scanning-circle .radar-scanner .outer-scanner .scanner-container .scanner-decoration .thin-border,
+  .radar .scanning-circle .radar-scanner .outer-scanner .scanner-container .scanner-decoration .small-ellipse {
+    -webkit-filter: blur(2px);
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .radar .scanning-circle .radar-scanner .outer-scanner .scanner-container .scanner-decoration .thin-border {
+    width: 0.0625em;
+    height: 50%;
+    background-color: red;
+  }
+  .radar .scanning-circle .radar-scanner .outer-scanner .scanner-container .scanner-decoration .small-ellipse {
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    transform: translateZ(0);
+  }
+  .radar .scanning-circle .radar-scanner .outer-scanner .scanner-container .scanner-decoration .small-ellipse:nth-child(2) {
+    width: 0.9375em;
+    height: 0.1875em;
+    top: 3%;
+  }
+  .radar .scanning-circle .radar-scanner .outer-scanner .scanner-container .scanner-decoration .small-ellipse:nth-child(3) {
+    width: 1.375em;
+    height: 0.25em;
+    top: 17%;
+  }
+  .radar .scanning-circle .radar-scanner .outer-scanner .scanner-container .scanner-decoration .small-ellipse:nth-child(4) {
+    width: 1em;
+    height: 0.125em;
+    top: 33%;
+    opacity: 0.3;
+  }
+  .radar .scanning-circle .scanning-dashed-circle {
+    -webkit-animation: rotation 2.67s linear infinite;
+            animation: rotation 2.67s linear infinite;
+  }
+  .radar .scanning-circle .scanning-dashed-empty-circle {
+    -webkit-animation: rotation 1.67s linear infinite;
+            animation: rotation 1.67s linear infinite;
+  }
+  .radar.lying-down .radar-map-container,
+  .radar.lying-down .radar-map,
+  .radar.lying-down .scanning-circle,
+  .radar.lying-down .risk-elements-group {
+    transition-duration: 1s;
+  }
+  .radar.lying-down .radar-map-container {
+    transform: scale(1);
+  }
+  .radar.lying-down .radar-map {
+    transform: translateZ(-125em) rotateX(70deg);
+    color: transparent;
+  }
+  .radar.lying-down .radar-map .risk-elements-group {
+    opacity: 1;
+  }
+  .radar.lying-down .radar-map .risk-elements-group .info-panel {
+    opacity: 0.4;
+  }
+  .radar.lying-down .radar-map .risk-elements-group .red-flag {
+    transition: transform 0.3s linear, opacity 0.5s linear, visibility;
+  }
+  .radar.lying-down .radar-map:not(.roaming) .risk-elements-group:nth-child(19) .red-flag {
+    transition-delay: `0.3 * 19`s, 0s, `0.3 * 19`s;
+  }
+  .radar.lying-down .radar-map:not(.roaming) .risk-elements-group:nth-child(19) .dashed-circle {
+    transition-delay: `0.3 * 19`s;
+  }
+  .radar.lying-down .radar-map:not(.roaming) .risk-elements-group:nth-child(18) .red-flag {
+    transition-delay: `0.3 * 18`s, 0s, `0.3 * 18`s;
+  }
+  .radar.lying-down .radar-map:not(.roaming) .risk-elements-group:nth-child(18) .dashed-circle {
+    transition-delay: `0.3 * 18`s;
+  }
+  .radar.lying-down .radar-map:not(.roaming) .risk-elements-group:nth-child(17) .red-flag {
+    transition-delay: `0.3 * 17`s, 0s, `0.3 * 17`s;
+  }
+  .radar.lying-down .radar-map:not(.roaming) .risk-elements-group:nth-child(17) .dashed-circle {
+    transition-delay: `0.3 * 17`s;
+  }
+  .radar.lying-down .radar-map:not(.roaming) .risk-elements-group:nth-child(16) .red-flag {
+    transition-delay: `0.3 * 16`s, 0s, `0.3 * 16`s;
+  }
+  .radar.lying-down .radar-map:not(.roaming) .risk-elements-group:nth-child(16) .dashed-circle {
+    transition-delay: `0.3 * 16`s;
+  }
+  .radar.lying-down .radar-map:not(.roaming) .risk-elements-group:nth-child(15) .red-flag {
+    transition-delay: `0.3 * 15`s, 0s, `0.3 * 15`s;
+  }
+  .radar.lying-down .radar-map:not(.roaming) .risk-elements-group:nth-child(15) .dashed-circle {
+    transition-delay: `0.3 * 15`s;
+  }
+  .radar.lying-down .radar-map:not(.roaming) .risk-elements-group:nth-child(14) .red-flag {
+    transition-delay: `0.3 * 14`s, 0s, `0.3 * 14`s;
+  }
+  .radar.lying-down .radar-map:not(.roaming) .risk-elements-group:nth-child(14) .dashed-circle {
+    transition-delay: `0.3 * 14`s;
+  }
+  .radar.lying-down .radar-map:not(.roaming) .risk-elements-group:nth-child(13) .red-flag {
+    transition-delay: `0.3 * 13`s, 0s, `0.3 * 13`s;
+  }
+  .radar.lying-down .radar-map:not(.roaming) .risk-elements-group:nth-child(13) .dashed-circle {
+    transition-delay: `0.3 * 13`s;
+  }
+  .radar.lying-down .radar-map:not(.roaming) .risk-elements-group:nth-child(12) .red-flag {
+    transition-delay: `0.3 * 12`s, 0s, `0.3 * 12`s;
+  }
+  .radar.lying-down .radar-map:not(.roaming) .risk-elements-group:nth-child(12) .dashed-circle {
+    transition-delay: `0.3 * 12`s;
+  }
+  .radar.lying-down .radar-map:not(.roaming) .risk-elements-group:nth-child(11) .red-flag {
+    transition-delay: `0.3 * 11`s, 0s, `0.3 * 11`s;
+  }
+  .radar.lying-down .radar-map:not(.roaming) .risk-elements-group:nth-child(11) .dashed-circle {
+    transition-delay: `0.3 * 11`s;
+  }
+  .radar.lying-down .radar-map:not(.roaming) .risk-elements-group:nth-child(10) .red-flag {
+    transition-delay: `0.3 * 10`s, 0s, `0.3 * 10`s;
+  }
+  .radar.lying-down .radar-map:not(.roaming) .risk-elements-group:nth-child(10) .dashed-circle {
+    transition-delay: `0.3 * 10`s;
+  }
+  .radar.lying-down .radar-map:not(.roaming) .risk-elements-group:nth-child(9) .red-flag {
+    transition-delay: `0.3 * 9`s, 0s, `0.3 * 9`s;
+  }
+  .radar.lying-down .radar-map:not(.roaming) .risk-elements-group:nth-child(9) .dashed-circle {
+    transition-delay: `0.3 * 9`s;
+  }
+  .radar.lying-down .radar-map:not(.roaming) .risk-elements-group:nth-child(8) .red-flag {
+    transition-delay: `0.3 * 8`s, 0s, `0.3 * 8`s;
+  }
+  .radar.lying-down .radar-map:not(.roaming) .risk-elements-group:nth-child(8) .dashed-circle {
+    transition-delay: `0.3 * 8`s;
+  }
+  .radar.lying-down .radar-map:not(.roaming) .risk-elements-group:nth-child(7) .red-flag {
+    transition-delay: `0.3 * 7`s, 0s, `0.3 * 7`s;
+  }
+  .radar.lying-down .radar-map:not(.roaming) .risk-elements-group:nth-child(7) .dashed-circle {
+    transition-delay: `0.3 * 7`s;
+  }
+  .radar.lying-down .radar-map:not(.roaming) .risk-elements-group:nth-child(6) .red-flag {
+    transition-delay: `0.3 * 6`s, 0s, `0.3 * 6`s;
+  }
+  .radar.lying-down .radar-map:not(.roaming) .risk-elements-group:nth-child(6) .dashed-circle {
+    transition-delay: `0.3 * 6`s;
+  }
+  .radar.lying-down .radar-map:not(.roaming) .risk-elements-group:nth-child(5) .red-flag {
+    transition-delay: `0.3 * 5`s, 0s, `0.3 * 5`s;
+  }
+  .radar.lying-down .radar-map:not(.roaming) .risk-elements-group:nth-child(5) .dashed-circle {
+    transition-delay: `0.3 * 5`s;
+  }
+  .radar.lying-down .radar-map:not(.roaming) .risk-elements-group:nth-child(4) .red-flag {
+    transition-delay: `0.3 * 4`s, 0s, `0.3 * 4`s;
+  }
+  .radar.lying-down .radar-map:not(.roaming) .risk-elements-group:nth-child(4) .dashed-circle {
+    transition-delay: `0.3 * 4`s;
+  }
+  .radar.lying-down .radar-map:not(.roaming) .risk-elements-group:nth-child(3) .red-flag {
+    transition-delay: `0.3 * 3`s, 0s, `0.3 * 3`s;
+  }
+  .radar.lying-down .radar-map:not(.roaming) .risk-elements-group:nth-child(3) .dashed-circle {
+    transition-delay: `0.3 * 3`s;
+  }
+  .radar.lying-down .radar-map:not(.roaming) .risk-elements-group:nth-child(2) .red-flag {
+    transition-delay: `0.3 * 2`s, 0s, `0.3 * 2`s;
+  }
+  .radar.lying-down .radar-map:not(.roaming) .risk-elements-group:nth-child(2) .dashed-circle {
+    transition-delay: `0.3 * 2`s;
+  }
+  .radar.lying-down .radar-map:not(.roaming) .risk-elements-group:nth-child(1) .red-flag {
+    transition-delay: `0.3 * 1`s, 0s, `0.3 * 1`s;
+  }
+  .radar.lying-down .radar-map:not(.roaming) .risk-elements-group:nth-child(1) .dashed-circle {
+    transition-delay: `0.3 * 1`s;
+  }
+  .radar.pause-animation .inner-scanner,
+  .radar.pause-animation .scanning-dashed-circle,
+  .radar.pause-animation .scanning-dashed-empty-circle {
+    -webkit-animation-play-state: paused;
+            animation-play-state: paused;
+  }
+  .radar.pause-animation .changing-number-container {
+    display: none;
+  }
+  .radar.pause-animation .risk-points {
+    display: none;
+  }
+  .radar.pause-animation .scanning-circle {
+    transform: scale(0);
+    opacity: 0;
+  }
+  html,
+  body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Staatliches', cursive;
+  }
+  body {
+    font-size: 0.8em;
+    margin: 0;
+    background-color: black;
+  }
+  .radar {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+  }
+  
+  @media only screen and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {
+    .radar {
+      overflow: hidden;
+    }
+  }
+  
+
+
+#switch-container{
+    position: absolute;
+    left: 10px;
+    top: 10px; 
+    padding: 10px;
+    background: #c1112a;
+    overflow: hidden;
+}
+
+#switch-container:hover, #bots-switch-container:hover {
+    background:rgba(255, 0, 0, 0.6);
+}
+
+#radar-switch-btn  {
+  font-family: 'Staatliches', cursive;
+    position: relative;
+    color: white;
+    padding: 20px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 25px;
+    text-shadow: 0 0 0.75rem white;
+  
+    
+}
+
+#radar-switch-btn:after {
+  content: "";
+  position:absolute;
+  bottom: 5px;
+  right: -20px;
+  margin:-20px;
+  width:40px;
+  height:40px;
+  transform:rotate(45deg);
+  background-color: black; /* to see where it is */
+}
+
+#bots-switch-container {
+  position: absolute;
+  left: 10px;
+  top: 70px; 
+  padding: 10px;
+  background: #c1112a;
+  overflow: hidden;
+}
+
+#bots-switch-btn  {
+  font-family: 'Staatliches', cursive;
+    position: relative;
+    color: white;
+    padding: 20px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 25px;
+    text-shadow: 0 0 0.75rem white;
+}
+
+#bots-switch-btn:after {
+  content: "";
+  position:absolute;
+  bottom: 5px;
+  right: -20px;
+  margin:-20px;
+  width:40px;
+  height:40px;
+  transform:rotate(45deg);
+  background-color: black; /* to see where it is */
+}
+
+#bots-list-container {
+  display: none;
+  position: absolute;
+  left: 10px;
+  top: 130px; 
+  width: 400px;
+  height: 80vh;
+  background: #c1112a;
+  overflow: hidden;
+}
+
+
+#bots-list-container:after {
+  content: "";
+  position:absolute;
+  bottom: 0px;
+  right: -10px;
+  margin:-20px;
+  width:40px;
+  height:40px;
+  transform:rotate(45deg);
+  background-color: black; /* to see where it is */
+}
+
+#relative-c {
+  position: relative;
+  width: 100%;
+  height: 100%;
+    overflow-y: scroll;
+}
+
+#deploy-bot-btn {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  color: white;
+  padding: 10px;
+  font-size: 20px;
+  border: 2px solid white;
+  text-decoration: none;
+  width: 100px;
+}
+
+#deploy-bot-btn:hover, .checkin-bot-btn:hover, .add-checkin-bot-btn:hover {
+    background: crimson;
+}
+
+#b-stats{
+  position: absolute;
+  left: 10px;
+  top: -10px;
+  color: white;
+  padding: 10px;
+  font-size: 20px;
+  border: 2px solid white;
+  text-decoration: none;
+  width: 210px;
+}
+
+.sect-close {
+  position: absolute;
+  top: 60px;
+  left: 5px;
+  width: 390px;
+  color: white;
+  border-color: white;
+  display: none;
+  
+}
+
+#total-bots {
+  padding-left: 5px;
+}
+
+
+#bot-row-container {
+  width: 95%;
+  position: absolute;
+  top: 60px;
+  left: 10px;
+  padding: 0px;
+  font-size: 20px;
+  color: white;
+}
+
+.bot-row {
+  list-style: none;
+  text-align: center;
+  border: 2px solid white;
+  margin-bottom: 10px;
+  position: relative;
+  padding-bottom: 10px;
+
+}
+
+.bot-token {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  padding-top: 0px;
+  font-size: 18px;
+}
+
+.lst-checkin {
+  margin: 0px;
+  margin-bottom: 5px;
+  font-size: 15px;
+}
+
+.checkin-bot-btn, .add-checkin-bot-btn {
+  display: inline-block;
+  color: white;
+  padding: 7px;
+  font-size: 20px;
+  border: 2px solid white;
+  text-decoration: none;
+  width: 140px;
+  margin-right: 5px;
+  font-size: 18px;
+}
+
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 10px;
+
+ background-color: transparent;
+}
+
+::-webkit-scrollbar-track {
+ border-radius: 0px;
+ background-color: #8d0000;
+}
+
+::-webkit-scrollbar-thumb {
+ background: #e1caca;
+}
+
+::-webkit-scrollbar-corner {background-color: transparent;}

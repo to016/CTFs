@@ -1,0 +1,13 @@
+spring:
+  thymeleaf:
+    mode: LEGACYHTML5
+    cache: false
+    templates_root: src/main/resources/templates/
+  jpa:
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/checkpointbot_db
+    username: checkpoint_user
+    password: ch3ckp0in7rh0x01
+    driver-class-name: com.mysql.jdbc.Driver

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Checkpoint Bots Monitor Interface</title>
+        <link rel="stylesheet" type="text/css" href="/css/home.css">
+    </head>
+    <body>
+        <div id="switch-container">
+            <a href="#" id="radar-switch-btn">Toggle radar view</a>
+        </div>
+        <div id="bots-switch-container">
+            <a href="#" id="bots-switch-btn">Show Checkpoint Bots</a>
+        </div>
+        <div id="bots-list-container">
+            <div id="relative-c">
+                <p id="b-stats">Total Bots Deployed: <span id="total-bots">0</span></p>
+                <a href="#" id="deploy-bot-btn">+ Deploy Bot</a>
+                <hr class="sect-close">
+                <ul id="bot-row-container">
+                </ul>
+            </div>
+        </div>
+    <div class="radar"></div>
+    <script src="/js/home.js"></script>
+    <script src="/js/jquery-3.6.0.min.js"></script>
+    <script src="/js/bots.js"></script>
+    </body>
+</html>

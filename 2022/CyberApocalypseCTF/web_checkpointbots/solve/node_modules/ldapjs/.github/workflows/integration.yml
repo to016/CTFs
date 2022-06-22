@@ -1,0 +1,32 @@
+name: 'Integration Tests'
+
+# Notes:
+#  https://github.community/t5/GitHub-Actions/Github-Actions-services-not-reachable/m-p/30739/highlight/true#M538
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  baseline:
+    name: Baseline Tests
+    runs-on: ubuntu-latest
+
+    services:
+      openldap:
+        image: ghcr.io/ldapjs/docker-test-openldap/openldap:latest
+        ports:
+          - 389:389
+          - 636:636
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 'lts/*'
+
+      - name: Install Packages
+        run: npm install
+      - name: Run Tests
+        run: npm run test:integration
