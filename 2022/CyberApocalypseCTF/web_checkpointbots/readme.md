@@ -41,6 +41,8 @@ public ResponseEntity<?> download(@RequestParam("token") String token) throws Ex
 
 Nhưng nếu làm theo cách thông thường: tạo ldap server với class để exploit (ví dụ là Exp)sau đó trigger một jndi lookup tới `/Exp` thì sẽ failed. Lí do là vì:
 
+![reason](https://user-images.githubusercontent.com/77546253/174995110-9f3c269e-5edb-4776-b6f7-775f73913fd7.png)
+
 
 Sau khi build docker xong ta thấy version của jdk là `11.0.15`
 
@@ -79,13 +81,18 @@ Sau một hồi tìm trong source code thì mình nhận thấy ở `utils/Check
 => ta có thể chỉnh sửa một tí để overwrite file `index.html` và đọc flag bằng path traversal + template injection.
 
 Cụ thể hơn thì ở thư mục `solve` mình có chỉnh lại code của `CheckInUtility` đồng thời có code để tạo một ldap server
+
 Host ldapserver:
+![host_ldap](https://user-images.githubusercontent.com/77546253/174995162-4e14ce0f-e5f1-4a3a-b61d-af1cc060acee.png)
 
 
 Gửi payload:
 
+![send_payload](https://user-images.githubusercontent.com/77546253/174995207-265b900c-66c7-4105-b784-4870b529dd25.png)
+
 
 Overwrite `index.html` thành công:
 
+![final](https://user-images.githubusercontent.com/77546253/174995239-a1b538b9-87c9-4e11-a930-9f0ca5f5c24d.png)
 
 
