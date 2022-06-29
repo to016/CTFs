@@ -16,3 +16,7 @@ Vì đề không cho dùng `'` nên mình dùng `dict()` để thay thế: `(dic
 
 để tạo ra space thì mình dùng `indent()`, đọc thêm ở [đây](https://tedboy.github.io/jinja2/templ14.html#indent)
 
+Kết quả:
+
+![flag](https://user-images.githubusercontent.com/77546253/176494531-0b33bf8a-192f-42cb-8f26-ff9ec29136a7.png)
+
