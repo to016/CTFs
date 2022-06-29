@@ -47,6 +47,9 @@ else{
 
 => `$str1=0e1137126905`
 
+Flag1:
+
+![flag1](https://user-images.githubusercontent.com/77546253/176494780-fa00ad7a-05f1-4f71-8805-ac2f5c4be44f.png)
 
 Cuối cùng để bypass đoạn check thứ 2:
 
@@ -64,3 +67,7 @@ Cuối cùng để bypass đoạn check thứ 2:
 Chỉ cần truyền vào 2 mảng khác nhau là xong:
 final payload:
 `http://103.245.249.76:49155/?0=0e1137126905&1[]=bla&2[]=blabla`
+
+Full flag:
+
+![flag2](https://user-images.githubusercontent.com/77546253/176494809-da98c1bd-08de-41f2-ac1e-f7bf31e823ab.png)
