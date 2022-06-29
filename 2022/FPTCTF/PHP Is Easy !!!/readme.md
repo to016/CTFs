@@ -28,5 +28,4 @@ php > echo md5( '0gdVIdSQL8Cm' );
 
 Tới đây lợi dụng php type juggling để bypass:
 
-
-
+![flag](https://user-images.githubusercontent.com/77546253/176494640-bc24ab38-7629-441b-ae33-2a226673c621.png)
