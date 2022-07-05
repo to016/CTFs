@@ -2,7 +2,7 @@
 
 Bài này cũng tương tự như bài trước nhưng đối với error thì đều hiển thị `Sensitive information detected in output. Censored for security reasons.`
 
-(blind)
+![blind](https://user-images.githubusercontent.com/77546253/177235566-1a0bd15b-0bb0-4d5a-a858-669e1c35f11f.png)
 
 Vì ta đang khai thác theo hướng log4j lookup và hiện tại có được:
 - kết quả của lookup là hợp lệ thì không hiển thị ra `Sensitive information detected in output. Censored for security reasons.` (có thể là `The command should start with a /.` hoặc kết quả của `System.out.println()` ...)
@@ -12,7 +12,7 @@ Vì ta đang khai thác theo hướng log4j lookup và hiện tại có được
 
 Tiếp theo mình thử search để tìm cách replace một chuỗi:
 
-(search)
+![search](https://user-images.githubusercontent.com/77546253/177235600-c4040336-b397-4fd5-ad6a-c4c2c1dedb4d.png)
 
 Tìm được `%replace`, sau khi đọc [docs](https://logging.apache.org/log4j/2.x/manual/layouts.html#:~:text=in%20the%20string%20%22**%22.-,replace,-%7Bpattern%7D%7Bregex%7D%7Bsubstitution) của nó thì có thể hiểu như sau:
 
@@ -24,13 +24,13 @@ Dùng source của version 1 sau đó build local, chỉnh `<Console name="Conso
 
 Sau đó test với `%replace{${env:FLAG}}{CTF}{${java:os}}`:
 
-(error_test)
+![error_test](https://user-images.githubusercontent.com/77546253/177235624-4551272e-6f22-4275-a892-9f842ca8b595.png)
 
 -> throw ra error ngay lập tức bởi vì biến môi trường FLAG có chứa `CTF` vì vậy sẽ trigger replace với substitution là `${java:os}`.  `named capturing group is missing trailing '}'` cho thấy **có lẽ** là không thể dùng lookup ở `substitution` của `%replace` hoặc cách dùng của mình bị sai (điều này không quan trọng lắm bởi vì mục đích vẫn là khai thác error-based).
 
 Nếu test với `%replace{${env:FLAG}}{CTFbla}{${java:os}}` thì:
 
-(success)
+![success_test](https://user-images.githubusercontent.com/77546253/177235689-65bf74b3-fbfe-49e8-8a40-aa4dbb83925a.png)
 
 -> không throw error bởi vì `CTFbla` không match với biến môi trường FLAG cho nên không trigger replace với substitution.
 
