@@ -24,7 +24,7 @@ Sau khi end giải thì mình thấy có một câu hỏi trên server discord c
 
 ![question](https://user-images.githubusercontent.com/77546253/177235467-c168a7f7-0e73-4192-83fe-20f2908120a8.png)
 
-Loay hoay đi tìm hiểu một hồi thì tóm lại có thể hiểu như sau: khi java bị crash thì sẽ print stackstrace ra stdout và stdout này sẽ được trả về thông qua:
+Loay hoay đi tìm hiểu một hồi thì tóm lại có thể hiểu như sau: khi java bị crash thì sẽ print stacktrace ra stdout và stdout này sẽ được trả về thông qua:
 
 ![return_stdout](https://user-images.githubusercontent.com/77546253/177235493-82ce26dd-540a-4bc0-9346-b14a6dd041cc.png)
 
