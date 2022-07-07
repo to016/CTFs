@@ -1,6 +1,6 @@
 # Appnote.txt
 
-Bài này là một dạng kỹ thuật nén nhiều tệp tin txt vào một file zip, ở đây ta có thể thấy flag được đánh số từ 0-18 tức là 19 ký tự và nếu dump ra 32 file flagxx.txt bất kỳ ta sẽ nhận được chuỗi strings abcdefghijklmnopqrstuvwxyz{CTF0137} lặp lại từ 00-18 có nghĩa là ký tự flag đã bị đảo chúng ta cần xác định vị trí chính xác của ký tự flag trong 32 flle flagxx.txt thì chúng t dựa vào `End of central directory record` của file zip là `50 4b 05 06` và từ `EOCDR` ta sẽ xác định được `Central Directory file header` sau 2 byte `00` là sẽ tới 2 byte `CD`:
+Bài này là một dạng kỹ thuật nén nhiều tệp tin txt vào một file zip, ở đây ta có thể thấy flag được đánh số từ 0-18 tức là 19 ký tự và nếu dump ra 32 file flagxx.txt bất kỳ ta sẽ nhận được chuỗi strings abcdefghijklmnopqrstuvwxyz{CTF0137} lặp lại từ 00-18 có nghĩa là ký tự flag đã bị đảo. Cần xác định vị trí chính xác của ký tự flag trong 32 file flagxx.txt thì chúng ta dựa vào `End of central directory record` của file zip là `50 4b 05 06` và từ `EOCDR` sẽ xác định được `Central Directory file header` sau 2 byte `00` là sẽ tới 2 byte `CD`:
 
 ```
 CC 00 00 00
@@ -133,6 +133,6 @@ je check_stack
 jmp loop
 ```
 
-Tóm tăt: Vì sử dụng mmap nên elf sẽ allocate nhưng memory region khác nhau. Như vậy chỉ cần duyệt qua tất cả các memory region, đoạn memory nào được allocate thì sẽ in hết nội dung ra. 
+Tóm tắt: Vì sử dụng mmap nên elf sẽ allocate nhưng memory region khác nhau. Như vậy chỉ cần duyệt qua tất cả các memory region, đoạn memory nào được allocate thì sẽ in hết nội dung ra. 
 
 Tham khảo: <https://shakuganz.com/2021/07/14/hackthebox-hunting-write-up>
