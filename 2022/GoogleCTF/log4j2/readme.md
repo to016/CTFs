@@ -35,8 +35,8 @@ Nếu test với `%replace{${env:FLAG}}{CTFbla}{${java:os}}` thì:
 -> không throw error bởi vì `CTFbla` không match với biến môi trường FLAG cho nên không trigger replace với substitution.
 
 Tóm lại ta có:
-- `text=%replace{${env:FLAG}}{CTF+<right character>}{${java:os}}` -> `The command should start with a /.`
-- `text=%replace{${env:FLAG}}{CTF+<wrong character>}{${java:os}}` -> `Sensitive information detected in output. Censored for security reasons.`
+- `text=%replace{${env:FLAG}}{CTF+<right character>}{${java:os}}` -> `Sensitive information detected in output. Censored for security reasons.`
+- `text=%replace{${env:FLAG}}{CTF+<wrong character>}{${java:os}}` -> `The command should start with a /.`
 
 ---
 
