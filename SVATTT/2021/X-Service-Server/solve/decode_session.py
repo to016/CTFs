@@ -1,0 +1,6 @@
+import zlib
+import base64
+
+session = ".eJwVzdEKgjAUgOFXGYOYQpibLlToIrrqusuKcbZzDEGndBQC8d2r-5_vX2Xbw0s28ny7XG8mN3rVrTV1HopgbV5qXddFebQQfAkYqsLT9ohyLzt2gEMXZaP3cmF6Rxjo56w7wTSLz4mJuRtjtkwIMyWr-o9UI_pu4mXInHv1o4eenburkdUzm8aJYqICzOLwbx3WhjCnymNrygoRvD2qNHsTYJJuqdhtcvsCbWs85g.YsvQQQ.MYxhTqCNzMtRXFCxslpHlalttJg="
+
+print(zlib.decompress(base64.urlsafe_b64decode(session)).decode())
