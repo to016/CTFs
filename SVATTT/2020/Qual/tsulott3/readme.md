@@ -1,0 +1,1 @@
+# Writeup: <https://hackmd.io/@to016/ascis_qual_2020>
