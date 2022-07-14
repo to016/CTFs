@@ -20,4 +20,4 @@ Run mysql client:
 
 Enjoy !
 
-# Writeup: <https://hackmd.io/@to016/ascis_qual_2020>
+# Writeup: <https://hackmd.io/@to016/ascis_2020>
