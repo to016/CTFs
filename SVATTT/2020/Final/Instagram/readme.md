@@ -1,0 +1,1 @@
+# Writeup: <https://github.com/vovikhangcdv/CTFs/tree/main/writeups/ASCIS-2020-Final/instargram>

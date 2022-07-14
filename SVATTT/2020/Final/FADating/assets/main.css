@@ -1,0 +1,78 @@
+/* Style the body */
+body {
+  font-family: Arial;
+  margin: 0;
+  background-color: white;
+  color: pink;
+}
+
+/* Header/Logo Title */
+.header {
+  padding: 1%;
+  text-align: center;
+  background: white;
+  color: black;
+}
+
+/* Sticky navbar - toggles between relative and fixed, depending on the scroll position. It is positioned relative until a given offset position is met in the viewport - then it "sticks" in place (like position:fixed). The sticky value is not supported in IE or Edge 15 and earlier versions. However, for these versions the navbar will inherit default position */
+.navbar {
+  border-style: dotted;
+  border-color: white;
+  overflow: hidden;
+  background-color: pink;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0;
+}
+
+/* Style the navigation bar links */
+.navbar a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none;
+}
+
+
+/* Right-aligned link */
+.navbar a.right {
+  float: right;
+}
+
+/* Change color on hover */
+.navbar a:hover {
+  background-color: #DB7093;
+  color: black;
+}
+
+/* Active/current link */
+.navbar a.active {
+  background-color: #DB7093;
+  color: black;
+}
+
+/* Header/Logo Title */
+.map {
+  text-align: center;
+  padding: 5%;
+}
+
+
+.neon {
+    color: #fff;
+    text-align: center;
+    animation: glow 1s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #ffb6c1, 0 0 20px #ffb6c1, 0 0 25px #ffb6c1, 0 0 30px #ffb6c1, 0 0 35px #ffb6c1;
+  }
+  to {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ffb6c1, 0 0 40px #ffb6c1, 0 0 50px #ffb6c1, 0 0 60px #ffb6c1, 0 0 70px #ffb6c1;
+  }
+}
+
+
