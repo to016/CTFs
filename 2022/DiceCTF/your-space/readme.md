@@ -68,6 +68,7 @@ PS C:\Users\ASUS> docker exec -it f4 redis-cli
 Có thể rút ra một vài điều sau:
 1. Giá trị được lưu ở dạng serialized
 2. Hai cặp key-value được tạo, ở đây nếu để ý sẽ thấy ở `flask_cache_app.routes.space.num_subscriptions_memver` sẽ lưu giá trị `XzIN9g` và giá trị này cũng chính là phần subfix của `flask_cache_xk28vUr8TTGcOgNTXzIN9g`. Ở key `flask_cache_xk28vUr8TTGcOgNTXzIN9g` lưu giá trị là kết quả của hàm tính tổng số subscriptions, hiện tại đang là 0.
+
 Dạng cache key của nó sẽ như sau khi gọi `@cache.memoize()`:
 1. `flask_cache_app.routes.space.num_subscriptions_memver`, chứa giá trị <IDENTIFIER>
 2. `flask_cache_<hash><IDENTIFIER>`, giá trị hash này là một const và có thể đọc từ trong source hoặc ở đây ta exec vào container và thấy được chính là `xk28vUr8TTGcOgNT`
