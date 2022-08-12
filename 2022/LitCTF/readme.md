@@ -1,1 +1,1 @@
-# Writeup: https://nguyendt.hashnode.dev/lit-ctf-2022
+# Writeup: <https://nguyendt.hashnode.dev/lit-ctf-2022>
