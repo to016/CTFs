@@ -1,1 +1,1 @@
-## Writeup cho tất cả challenges web: <https://hackmd.io/@to016/imaginaryCTF2022>
+## Writeup cho tất cả challenges web: <https://nguyendt.hashnode.dev/imaginary-ctf-2022>
