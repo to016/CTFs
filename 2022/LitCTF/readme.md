@@ -1,1 +1,1 @@
-# Writeup: https://hackmd.io/@to016/litctf2022
+# Writeup: https://nguyendt.hashnode.dev/lit-ctf-2022
