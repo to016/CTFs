@@ -8,7 +8,7 @@ Link: <http://18.159.101.163/?page=showMeTheCode>
 
 Rule:
 
-(rule.png)
+![rule](https://user-images.githubusercontent.com/77546253/186453201-cf189699-207c-43b5-a606-2dbc54e8fb74.png)
 
 ## Phân tích
 
@@ -132,20 +132,21 @@ sau đó set giá trị `$_SESSION[$key] = $value;` và `self::stop();`: end ses
 -> Idea sẽ là 
 1. Login với tài khoản `user:user` nhưng lại dùng một `PHPSESSID` invalid để tạo một session file có giá trị như sau
 
-(session.png)
+![session](https://user-images.githubusercontent.com/77546253/186453261-02f0e1a2-b6cb-4c05-b165-5648aa9f0be7.png)
 
 2. Sau đó login lại với `PHPSESSID` như trên và `username=admin`:
 
-(admin_login_success)
+![admin_login_success_local](https://user-images.githubusercontent.com/77546253/186453306-a6ce1198-e1c3-4397-b005-49d21459e7d6.png)
 
 3. Và `?page=flag` ta có được flag:
 
-(flag_local.png)
+![flag_local](https://user-images.githubusercontent.com/77546253/186453346-2edc5143-1d4c-4131-aaaf-119a60d32369.png)
 
 Tuy nhiên, Khi làm remote thì ta sẽ không thể biết được giá trị `PHPSESSID` ở bước 1 (dĩ nhiên vì nó là random) nhưng tác giả đã cấu hình để cho mỗi lần gọi `session_start()` thì sẽ xuất hiện header `Set-Cookie` trong reponse.
 
-(mul_set-cookie-header.png)
+![mul_set-cookie_header](https://user-images.githubusercontent.com/77546253/186453375-c536f126-dd37-4656-afb5-a3a814e1dbfd.png)
 
 Thử với từng giá trị nhận được cho tới khi được flag
 
-(flag_remote.png)
+![flag_remote](https://user-images.githubusercontent.com/77546253/186453398-b17911d1-2dbd-4229-8ada-c8b4e3b1b5ad.PNG)
+
