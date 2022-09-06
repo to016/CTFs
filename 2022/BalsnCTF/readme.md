@@ -61,7 +61,7 @@ cat file .pyc này ra là có flag1
 
 # Health Check 2 (web)
 
-Source vẫn như cũ nhưng ta cần đọc được flag2, phần này hơi thiêng về "Privilege escalation" 1 tí mà cụ thể là docker escape
+Source vẫn như cũ nhưng ta cần đọc được flag2, phần này hơi thiên về "Privilege escalation" 1 tí mà cụ thể là docker escape
 
 Có thể thấy ở `background.py`
 
