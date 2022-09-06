@@ -8,7 +8,7 @@ Link: <http://18.159.101.163/chall2/index.php?page=showMeTheCode>
 
 Rule:
 
-(rule)
+![rule](https://user-images.githubusercontent.com/77546253/188698345-8556d716-7aac-4748-aa38-0ba993cef213.png)
 
 ## Phân tích
 
@@ -44,7 +44,7 @@ function ban($username) {
 
 `$banfile->xinclude(0);` vẫn bị dính XInclude attack, mình test online tại [đây](https://onlinephp.io/) với 1 webhook để nhận request
 
-(xinclude_test)
+![xinclude_test](https://user-images.githubusercontent.com/77546253/188698377-90f22b76-a491-431c-a6f5-86dea5564b89.png)
 
 Vậy kịch bản khai thác sẽ là
 - Tạo một username bất kì (đề phòng thôi) và làm cho username này bị ban (login 3 lần với pass bất kì)
