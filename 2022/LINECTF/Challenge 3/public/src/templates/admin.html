@@ -1,0 +1,67 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<script>
+    $(document).ready(()=>{
+        let hideAll = ()=>{
+            $(".fail").hide();
+            $(".success").hide();
+        };
+        hideAll();
+
+        if(location.hash !== "") {
+            const msg = decodeURI(location.hash.slice(1));
+            if(msg.toLowerCase().match(/\.|\(|\)|script|\`/) === null){
+                $(".success").html(msg);
+                $(".success").show();
+            }
+        } 
+
+        $("#convert").click(()=>{
+            hideAll();
+            data = {
+                "url": $("#url").val()
+            };
+
+            $.ajax({
+                type: "POST",
+                url: "/admin",
+                data: JSON.stringify(data),
+                dataType: "json",
+                contentType : "application/json",
+                success: (result)=>{
+                    if(result.status === 200){
+                        $(".success").html(result.output);
+                        $(".success").show();
+                    } else {
+                        $(".fail").text(result.msg);
+                        $(".fail").show();
+                    }
+                }                
+            });
+            return false;
+        });
+    });
+</script>
+<h1 class="mt-5">Convert HTML to PDF</h1>
+<p class="lead">
+    <form>
+        <div class="form-col">
+          <div class="fail alert alert-danger hide" role="alert">
+          </div>
+          <div class="success alert alert-success" role="alert">
+          </div>
+          <div class="mb-3">
+              <!-- <label for="password">Password</label> -->
+              <input type="text" class="form-control" name="url" placeholder="https://example.com" id="url" required>
+          </div>
+        </div>
+          <div class="form-row">
+              <div class="col-md3">
+                  <button class="btn btn-primary" id="convert">Convert</button>
+              </div>
+          </div>
+      </form>
+</p>
+
+{% endblock %}

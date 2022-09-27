@@ -1,0 +1,57 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<script>
+    $(document).ready(()=>{
+        let hideAll = ()=>{
+            $(".fail").hide();
+            $(".success").hide();
+        };
+        hideAll();
+
+        $("#verify").click(()=>{
+            hideAll()
+            data = {
+                "password": $("#password").val()
+            };
+
+            $.ajax({
+                type: "POST",
+                url: "/admin",
+                data: JSON.stringify(data),
+                dataType: "json",
+                contentType : "application/json",
+                success: (result)=>{
+                    if(result.status === 200){
+                        location.href=result.return;
+                    } else {
+                        $(".fail").text(result.msg);
+                        $(".fail").show();          
+                    }
+                }                
+            });
+            return false;
+        });
+    });
+</script>
+<h1 class="mt-5">Please input admin's password</h1>
+<p class="lead">
+    <form>
+        <div class="form-col">
+          <div class="fail alert alert-danger hide" role="alert">
+          </div>
+          <div class="success alert alert-success" role="alert">
+          </div>
+          <div class="mb-3">
+              <!-- <label for="password">Password</label> -->
+              <input type="password" class="form-control" name="password" placeholder="password" id="password" required>
+          </div>
+        </div>
+          <div class="form-row">
+              <div class="col-md3">
+                  <button class="btn btn-primary" id="verify">Verify</button>
+              </div>
+          </div>
+      </form>
+</p>
+{% endblock %}

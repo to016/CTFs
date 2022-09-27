@@ -1,0 +1,32 @@
+version: '3'
+
+services: 
+  public:  
+    build: public/
+    ports:
+      - "5000:5000"
+    links:
+      - db
+    networks:
+      - int
+      - ext
+    environment:
+      - LOG_SERVER_HOST=auth:8000
+  db:
+    image: mongo:latest
+    networks:
+      - int
+  auth:
+    build: auth/
+    networks:
+      - int
+    environment:
+      - PORT=8000
+      - HOST=0.0.0.0
+      - FLAG=LINE{this_is_fake_flag}
+      - ADMINPW=this_is_fake_pw
+
+networks:
+  int:
+  ext:
+    external: false

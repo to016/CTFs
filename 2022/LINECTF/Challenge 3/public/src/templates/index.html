@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h1 class="mt-5">Welcome to our service.</h1>
+    <p class="lead">
+{% if username %}
+    Hello, {{username}}
+{% else %}
+    Hello, guest!
+{% endif %}
+    </p>
+{% endblock %}
