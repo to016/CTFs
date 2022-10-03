@@ -1,6 +1,6 @@
 # Bottle Poem
 
-Mở burp, và check tag http history dễ thấy ta có thể khai thác local file read (LFR) tại `/show?id=`
+Mở burp, và check tab http history dễ thấy ta có thể khai thác local file read (LFR) tại `/show?id=`
 
 ![LFR](https://user-images.githubusercontent.com/77546253/193604811-6f66b999-6627-4c31-aa56-82927b1f6957.png)
 
