@@ -2,11 +2,11 @@
 
 Mở burp, và check tag http history dễ thấy ta có thể khai thác local file read (LFR) tại `/show?id=`
 
-(LFR.png)
+![LFR](https://user-images.githubusercontent.com/77546253/193604811-6f66b999-6627-4c31-aa56-82927b1f6957.png)
 
-Tiếp tục fuzz và ta có thể lấy được source file main của server
+Tiếp tục fuzz ta có thể lấy được source file main của server
 
-(app_py.png)
+![app_py](https://user-images.githubusercontent.com/77546253/193604841-3e55f2a3-dd19-49a1-a341-8ba35b613038.png)
 
 Điều làm mình để ý đó là đoạn code sau trong route `/sign`
 
@@ -29,15 +29,15 @@ Nếu `session["name"]=="admin"` thì sẽ render ra một template riêng cho a
 
 -> read file này tại `/proc/self/cwd/config.secret.py`
 
-(secret_py.png)
+![secret_py](https://user-images.githubusercontent.com/77546253/193604875-fa747bb1-aa30-430a-a6d1-d3a032aa1349.png)
 
-Nhưng sau khi forge thành công thì chỉ nhận lại dòng chữ `Hello, you are admin, but it’s useless.`, tới đây tác giả có đề cập về `Flag is executable on server.` -> execute file này để lấy flag -> phải rce
+Nhưng sau khi forge thành công thì chỉ nhận lại dòng chữ `Hello, you are admin, but it’s useless.`, nhìn lại description thì thấy tác giả có đề cập về `Flag is executable on server.` -> execute file này để lấy flag -> phải rce
 
-Mình bay vào source của bottle, và để ý `bottle.py` có import pickle và dùng chúng trong việc set_cookie cũng như get_cookie
+Mình bay vào source của bottle, và để ý trong file `bottle.py` có import pickle và dùng chúng trong việc set_cookie cũng như get_cookie
 
-(get_cookie.png)
+![get_cookie](https://user-images.githubusercontent.com/77546253/193604971-69579aae-0bfd-418a-9629-098b2765b0fc.png)
 
-=> pickle deserialization trong python để rce
+=> lợi dụng pickle deserialization trong python để rce
 
 script:
 
