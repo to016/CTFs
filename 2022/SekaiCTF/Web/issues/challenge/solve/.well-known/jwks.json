@@ -1,0 +1,10 @@
+{
+    "keys": [
+        {
+            "alg": "RS256",
+            "x5c": [
+                "MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAvCdLvClZiCkpuzuh3oD8\nNO7utEpRh/cCo3xrzXRdyCp4V0JvrcJzn2W/VWvUPcCoYYChF3Np3qRleLWIewUC\nHUxLWgTNb0RVeqbyes4UxDMUetYPfG18raw3pf5eSKpaA6PyMt3ex5Em+PibN9k+\n+USWkvcJ7LMc1YqmADZHkNelsvK3WDGmbVWp4mKK/nUmgcurRPpWVBssVfgguQ2U\nfoNYFOxkmHqxugEm8XrKkqosWAMKBC+iyCu2+rb2/gzC0QX0CwF14N6uFJsdclsE\nXtDg0hRMyKIYhItkSPjMMYvd7EY0QTN7bfXGxociqCxG538r3q/9kaosrBFNcuRq\nBK0MceCTSW1E03eLxdJriPTZnpHoDWqS1E5QKMtKFsoK17Ftf2m8PCnHKuFBm9Sm\niwBfRvX78GN8KmiaxnY0A3EdkJbVvyev1QiRVr9OYAd614+m0+zGlDo9996X8Mn6\npiR5BlpvoBupPmOMDZ1Bidkz2JxZMaPcm/EshsfIf3wSTGEKExXlydr710xOiOnY\n03oW0tsvmXbzsMwDd7WOCjPQT44JiWr66iD7DlzF+Argzk3FvfezbvfgpMyTCPqU\nvqzgOLybGGw6v4a9yz6HCMwlZXEkw5Kq7nEVPWMmO04S6YASoIA7trrs32alrcp+\nO3y4XpqO0/WQq2XGjh3M5LsCAwEAAQ=="
+            ]
+        }
+    ]
+}
