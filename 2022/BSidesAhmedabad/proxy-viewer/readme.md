@@ -1,0 +1,1 @@
+https://vulners.com/debiancve/DEBIANCVE:CVE-2022-35949

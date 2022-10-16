@@ -1,0 +1,21 @@
+version: "3.7"
+
+services:
+  chal:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: inapi
+    volumes:
+      - ./chal/app.py:/app.py
+    ports:
+      - 9090:9090
+    links:
+      - flag
+  flag:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: inapi
+    volumes:
+      - ./flag/app.py:/app.py
