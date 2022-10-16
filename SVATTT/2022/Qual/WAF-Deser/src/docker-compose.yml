@@ -1,0 +1,16 @@
+version: "3.3"
+services:
+  web:
+    restart: always
+    build: .
+    image: waf-deser
+  waf:
+    image:  nginx:1.16
+    restart: unless-stopped
+    ports:
+      - "8081:80"
+      
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on: 
+      - web
