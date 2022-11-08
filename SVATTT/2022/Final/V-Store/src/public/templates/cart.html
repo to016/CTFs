@@ -1,0 +1,57 @@
+{% extends "layouts/app.html" %}
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            {% if success %}
+            <div class="alert alert-success">
+                <strong>{{ success }}</strong>
+            </div>
+            {% endif %}
+            {% if error %}
+            <div class="alert alert-danger">
+                <strong>{{ error }}</strong>
+            </div>
+            {% endif %}
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5><span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    {% for item in items %}
+                    <div class="row">
+                        <div class="col-md-2"><img class="img-responsive" src="{{ item.image }}">
+                        </div>
+                        <div class="col-md-4">
+                            <h4 class="product-name"><strong>{{ item.name }}</strong></h4>
+                            <h4><small>{{  item.name == 'Flag' ? flag : item.description }}</small></h4>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row text-center">
+                                <div class="col-md-9">
+                                    <h4 class="text-right"><strong>{{ item.price }}</strong></h4>
+                                </div>
+                                <form class="col-md-3" action="" method="POST">
+                                    <input type="hidden" name="item_id" value="{{item.id}}">
+                                    <button type="submit" class="btn btn-success btn-block">
+                                        Sell
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    {% endfor %}
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

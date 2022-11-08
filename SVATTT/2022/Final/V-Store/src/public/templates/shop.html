@@ -1,0 +1,56 @@
+{% extends "layouts/app.html" %}
+{% block body %}
+<div class="container">
+    <div class="content-wrapper">
+        <div class="item-container">
+            {% if success %}
+            <div class="alert alert-success">
+                <strong>{{ success }}</strong>
+            </div>
+            {% endif %}
+            {% if error %}
+            <div class="alert alert-danger">
+                <strong>{{ error }}</strong>
+            </div>
+            {% endif %}
+            {% for item in items %}
+            <div class="row">
+                <div class="col-md-4 col-md-offset-1">
+                    <div class=" col-md-4 service-image-left">
+                        <center>
+                            <img id="item-display" src="{{ item.image }}" alt=""></img>
+                        </center>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="product-title">{{ item.name }}</div>
+                    <div class="product-desc">{{ item.description }}</div>
+                    <div class="product-rating"><i class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i
+                            class="fa fa-star gold"></i> <i class="fa fa-star gold"></i> <i class="fa fa-star-o"></i>
+                    </div>
+                    <div class="product-price">{{ item.price }}đ</div>
+                    <hr>
+                    <div class="input-group">
+                        <input type="hidden" name="item_id" value="{{ item.id }}">
+                        <div class="btn-group cart">
+                            <button type="submit" class="btn btn-success" onclick="checkStock({{ item.id }})">
+                                Check stock
+                            </button>
+                        </div>
+                        <div class="btn-group cart">
+                            <button type="submit" class="btn btn-success" onclick="addToCart({{ item.id }})">
+                                Add to Cart
+                            </button>
+                        </div>
+                        <span id="{{ item.id }}"><b></b></span>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

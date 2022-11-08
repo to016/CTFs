@@ -1,0 +1,1 @@
+curl -X POST -d 'username=b+18RE+xl+/ueAoDpYiRaU5KUxWyHCiTMWjA/tD4yvVAKT09TGp0eyIGxLUcQ7lkel62q3qV+Wjjf+2/byfRic5EBz6xW/abq5ZbLPUaWbw=&password=b+18RE+xl+/ueAoDpYiRaU5KUxWyHCiTMWjA/tD4yvVAKT09TGp0eyIGxLUcQ7lkel62q3qV+Wjjf+2/byfRic5EBz6xW/abq5ZbLPUaWbw=' http://10.254.0.254:4061/index.php?page=login -L
