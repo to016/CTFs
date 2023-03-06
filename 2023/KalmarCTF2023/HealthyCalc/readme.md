@@ -6,19 +6,19 @@ Dễ thấy với những bài sử dụng text-based protocol như thế này t
 
 Syntax đúng của set command trong memcache như sau:
 
-(set_command.png)
+![set_command](https://user-images.githubusercontent.com/77546253/223177206-94af17b8-0ccd-45bc-aa15-a1aa3c226d6c.png)
 
 Thử inject key là `vanir` với value là `haha`
 
-(memcahe_inject.png)
+![memcache_inject](https://user-images.githubusercontent.com/77546253/223177339-26d58a50-9092-4660-b2fa-40f43a492753.png)
 
 Exec vào container, telnet đến memcahe server và tiến hành kiểm tra
 
-(inject_success_check)
+![check_inject_success](https://user-images.githubusercontent.com/77546253/223177375-7f529294-2536-4795-aaee-6812231dfd8a.png)
 
 -> Thành công.
 
-Tiếp theo, mình dive source để tìm kiếm thêm thông tin cho việc rce. Server sử dụng `pylibmc` làm memcache client để thực hiện set và get data. Về `pylibmc`, nó là một thư viện python nhưng được viết bằng C và khi dive source của thằng này sẽ tìm được mảnh ghép cuối cùng để solve bài này.
+Tiếp theo, mình dive source để tìm kiếm thêm thông tin cho việc rce. Server sử dụng `pylibmc` làm memcache client để thực hiện set và get data. Về `pylibmc`, nó là một thư viện python nhưng được viết bằng C và khi dive source của thằng này sẽ tìm được mảnh ghép cuối cùng để solve chall.
 
 Chain sẽ như sau:
 
@@ -31,11 +31,13 @@ PylibMC_Client_get ->
 
 Nếu `dtype` là `PYLIBMC_FLAG_PICKLE` thì sẽ thực hiện unpickle -> rce (Source tại [đây](https://github.com/lericson/pylibmc/blob/78138d33c4156111294269a2a8f0cfcc66ac5c5c/src/_pylibmcmodule.c))
 
-(unpickle.png)
+![unpickle](https://user-images.githubusercontent.com/77546253/223177527-518837c7-cd8a-4fec-b447-160756203019.png)
 
-Và check file `_pylibmcmodule.h` tại [đây](https://github.com/lericson/pylibmc/blob/78138d33c4156111294269a2a8f0cfcc66ac5c5c/src/_pylibmcmodule.h), ta thấy để thỏa mãn điều kiện thì cần giá trị của `flags` khi gửi command set là `1`
+Sau khi check file `_pylibmcmodule.h` tại [đây](https://github.com/lericson/pylibmc/blob/78138d33c4156111294269a2a8f0cfcc66ac5c5c/src/_pylibmcmodule.h), ta thấy để thỏa mãn điều kiện thì cần giá trị của `flags` khi gửi command set là `1`
 
-(flag_pickle.png)
+![flag_pickle](https://user-images.githubusercontent.com/77546253/223177661-adfa4c6c-e883-4037-9b29-78be3290afc2.png)
+
+Vậy ý tưởng khai thác sẽ là: memcache injection để set giá trị cho một key là payload rce (khi được unpickle), sau đó gửi GET request tới server để memcache client thực hiện lấy key này về => RCE diễn ra 
 
 Final script:
 ```python
