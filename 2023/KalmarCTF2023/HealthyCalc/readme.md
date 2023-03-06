@@ -2,7 +2,7 @@
 
 Bài này server sử dụng package celery để tạo các task queue, đồng thời kết hợp với memcache để lưu  kết quả của các phép tính cộng trừ nhân chia giúp giảm thời gian tính toán trong những lần sau.
 
-Dễ thấy với những bài sử dụng text-based protocol như thế này ta thường có thể inject vào backend (redis, memcache, ...). Và ở bài này cũng vậy, có thể khai thác memcache injection tại route `/calc/<operation>/<lhs>/<rhs>`
+Dễ thấy với những chall có backend (redis, memcache, ...) sử dụng text-based protocol như thế này ta thường đều có thể inject chúng. Và ở bài này cũng vậy, có thể khai thác memcache injection tại route `/calc/<operation>/<lhs>/<rhs>`
 
 Syntax đúng của set command trong memcache như sau:
 
