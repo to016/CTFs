@@ -46,8 +46,8 @@ app.get('/orders', (req, res) => {
     ...
 ```
 
-và redirect đến `http://127.0.0.1:5000/orders` là xong, bởi vì nếu để ý kĩ thì ta thấy cookie được set cho path `localhost:5000` và SameSite level là Strict vì vậy đối với hostname `127.0.0.1` sẽ được tính là  không phải same site -> k gửi kèm theo cookie có name `bot`.
+và redirect đến `http://127.0.0.1:5000/orders` là xong, bởi vì nếu để ý kĩ thì ta thấy cookie được set cho path `localhost:5000` và SameSite level là Strict vì vậy đối với hostname `127.0.0.1` sẽ không được tính là "same site" -> k gửi kèm theo cookie có name `bot`.
 
 payload:
 
-(payload.png)
+![solve](https://user-images.githubusercontent.com/77546253/223176893-da84fbd3-6374-4192-b09a-282191e3cb76.png)
