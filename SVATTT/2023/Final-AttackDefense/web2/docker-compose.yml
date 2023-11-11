@@ -1,0 +1,20 @@
+version: "3.3"
+services:
+  front:
+    build: ./front
+    networks:
+      - no-internet
+      - internet
+    ports:
+      - "8004:5000"
+    depends_on: 
+      - back
+  back:
+    build: ./back
+    networks:
+      - no-internet
+
+networks:
+  internet: {}
+  no-internet:
+    internal: true
