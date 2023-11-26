@@ -1,0 +1,7 @@
+version: "3"
+
+services:
+  capture-web:
+    build: .
+    ports:
+      - "22225:22225"

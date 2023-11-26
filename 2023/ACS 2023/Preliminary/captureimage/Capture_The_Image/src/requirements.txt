@@ -1,0 +1,5 @@
+flask_wtf
+flask
+selenium==4.7.2
+gunicorn
+requests

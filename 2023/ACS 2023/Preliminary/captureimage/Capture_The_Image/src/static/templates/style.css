@@ -1,0 +1,28 @@
+body {
+    background-image: url('background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: black;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+.container {
+    width: 70%;
+    height: 200px;
+    overflow: hidden;
+    margin: 20px auto 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.centered-content {
+    text-align: center;
+}
+
+.centered-content h2,
+.centered-content h3 {
+    color: white;
+    font-family: 'Noto Sans', sans-serif;
+}

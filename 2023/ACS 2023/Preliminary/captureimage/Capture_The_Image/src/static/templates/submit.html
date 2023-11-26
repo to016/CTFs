@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+  <center>
+    <div class="centered-content">
+      <h2 style="color: white; font-family: 'Noto Sans', sans-serif;">Send me a LINK !</h2>
+      <form action="/submit" method="post">
+
+        <input type="text" id="link" name="link"><br><br>
+
+        <br/>
+        <input type="submit" value="Submit">
+
+      </form>
+      <h3 style="color: wheat; font-family: 'Noto Sans', sans-serif;">{{ message }}</h3>
+    </div>
+  </center>
+</div> 
+
+<!-- @test memo : /api/test -->
+
+{% endblock %}
